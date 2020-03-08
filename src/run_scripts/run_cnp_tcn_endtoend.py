@@ -38,6 +38,7 @@ def cnp_tcn_config():
     epochs = 100
     learning_rate = 0.0001
     l2_penalty = 100
+    log_prob_fraction = 0.00001
 
 
     tcn_parameters = {
@@ -62,7 +63,7 @@ def cnp_tcn_config():
     'data_filepath' : '../data_prepro/mgp-rnn-datadump_labs_vitals_covs_na_thres_500_min_length_7_max_length_200_horizon_0_split_0.pkl',
     'learning_rate' : learning_rate,
     'l2_penalty' : l2_penalty,
-    'log_prob_fraction': 0.0001 #loss is fraction*log_prob_loss  + (1-fraction)*classifier_loss    
+    'log_prob_fraction': log_prob_fraction #loss is fraction*log_prob_loss  + (1-fraction)*classifier_loss    
     }
 
 
@@ -282,8 +283,8 @@ def fit_cnp_tcn(cnp_parameters, tcn_parameters, training_parameters,  _rnd, _see
 
                 #create a folder and put model checkpoints there
                 saver.save(sess, checkpoint_path + "/epoch_{}".format(i), global_step=total_batches)
-            print("Finishing epoch "+"{:d}".format(i)+", took "+\
-                  "{:.3f}".format(time()-epoch_start))
+        print("Finishing epoch "+"{:d}".format(i)+", took "+\
+                "{:.3f}".format(time()-epoch_start))
 
         ### Takes about ~1-2 secs per batch of 50 at these settings, so a few minutes each epoch
         ### Should converge reasonably quickly on this toy example with these settings in a few epochs

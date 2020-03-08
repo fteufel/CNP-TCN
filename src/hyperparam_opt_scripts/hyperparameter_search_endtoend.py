@@ -27,7 +27,8 @@ def cfg():
         'encoder_output_size': ('Integer', 100,512),
         'encoder_levels' : ('Integer', 3,6),
         'decoder_output_size': ('Integer', 100,512),
-        'decoder_levels': ('Integer', 3,5)
+        'decoder_levels': ('Integer', 3,5),
+        'log_prob_fraction': ('Real', 0.00001,0.9)
 
     }
     # These parameters will be passed to the mgp_rnn_experiment
