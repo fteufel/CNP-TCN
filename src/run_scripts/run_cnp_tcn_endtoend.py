@@ -256,7 +256,7 @@ def fit_cnp_tcn(cnp_parameters, tcn_parameters, training_parameters,  _rnd, _see
                     
 
                     try:        
-                        va_loss_,va_logits_, va_probs_, _ = sess.run([complete_loss,logits, probs, train_op],feed_dict)
+                        va_loss_,va_logits_, va_probs_ = sess.run([complete_loss,logits, probs],feed_dict)
                         
                     except Exception as e:
                         traceback.format_exc()
